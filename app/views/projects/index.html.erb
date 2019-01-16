@@ -1,0 +1,6 @@
+<% @projects.each do |project| %>
+  <%= project.title %><br/>
+  <% project.todos.each do |t| %>
+    <%= t.text %>
+  <% end %>
+<% end %>
