@@ -1,6 +1,20 @@
+<h1>Задачи</h1>
 <% @projects.each do |project| %>
-  <%= project.title %><br/>
+  <h2><%= project.title %></h2>
   <% project.todos.each do |t| %>
-    <%= t.text %>
+    <ul><li> <h4><%= t.text %></h4> </li></ul>
   <% end %>
 <% end %>
+
+<h2>НОВАЯ ЗАДАЧА</h2>
+<a id="clickme" href="#"><%= image_tag "addTodoIcon.png" %></a>
+<div id="block" style="display: none;">
+<%= form_with scope: :todo, :html => { :class => 'new_todo'} do |todo| %>
+  <%= todo.text_field :text, :placeholder => "Название задачи..." %> <br/>
+  <%= select(:todo, "project_id", @projects.collect {|p| [ p.title, p.id ] }, {prompt: "Категория"}) %>
+  <table>
+      <th><%= link_to 'ОТМЕНА', "#", :class => 'cancellation' %></th>
+      <th><%= link_to 'OK', "#", :onclick=>"$('.new_todo').submit()" %></th>
+    </table>
+<% end %>
+</div>
