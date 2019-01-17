@@ -9,12 +9,12 @@
 <h2>НОВАЯ ЗАДАЧА</h2>
 <a id="clickme" href="#"><%= image_tag "addTodoIcon.png" %></a>
 <div id="block" style="display: none;">
-<%= form_with scope: :todo, :html => { :class => 'new_todo'} do |todo| %>
+<%= form_with scope: :todo, url: todos_path, method: :post, :html => { :class => 'new_todo'} do |todo| %>
   <%= todo.text_field :text, :placeholder => "Название задачи..." %> <br/>
   <%= select(:todo, "project_id", @projects.collect {|p| [ p.title, p.id ] }, {prompt: "Категория"}) %>
   <table>
       <th><%= link_to 'ОТМЕНА', "#", :class => 'cancellation' %></th>
-      <th><%= link_to 'OK', "#", :onclick=>"$('.new_todo').submit()" %></th>
+      <th><%= link_to 'OK', "", :class => 'submit' %></th>
     </table>
 <% end %>
 </div>

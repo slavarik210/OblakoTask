@@ -15,12 +15,15 @@
 //= require jquery_ujs
 //= require_tree .
 $(document).ready(function() {
-  
+
   $("#clickme").click(function() {
-    $("#block").toggle("slow");
-    newTodoForm.style.display = "block";
+    $("#block").show("slow");
   }); 
 
+  $(".submit").click(function() {
+    $('.new_todo').submit();
+  });
+  
   $(".cancellation").click(function() {
     window.location.href = "";
   });

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'projects#index', as: :root_url
+  root 'projects#index'
   
   resources :todos, only: [:create, :update]
 end
