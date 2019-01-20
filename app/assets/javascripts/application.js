@@ -16,7 +16,7 @@
 //= require_tree .
 $(document).ready(function() {
 
-  $("#clickme").click(function() {
+  $("#clickToAddTodo").click(function() {
     $("#block").show("slow");
   }); 
 
@@ -26,5 +26,12 @@ $(document).ready(function() {
   
   $(".cancellation").click(function() {
     window.location.href = "";
+  });
+
+  $('input').iCheck({
+    checkboxClass: 'icheckbox_square-blue',
+  });
+  $('input').on('ifToggled', function(event){
+    $(this).closest("form").submit();
   });
 });

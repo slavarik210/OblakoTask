@@ -1,7 +1,9 @@
 class TodosController < ApplicationController
 
   def update
-    
+    todo = Todo.find(params[:id])
+    todo.update(:isCompleted => !todo.isCompleted)
+    redirect_to root_path
   end
 
   def create

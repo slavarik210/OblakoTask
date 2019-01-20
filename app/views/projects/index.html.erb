@@ -1,14 +1,24 @@
 <div class='header'>
-  <h1>Задачи</h1>
-  <a id="clickme" href="#"><%= image_tag "addTodoIcon.png" %></a>
+  <h2>Задачи</h2>
+  <a id="clickToAddTodo" href="#"><%= image_tag "addTodoIcon.png" %></a>
 </div>
 
-<% @projects.each do |project| %>
-  <h2><%= project.title %></h2>
-  <% project.todos.each do |t| %>
-    <ul><li> <h4><%= t.text %></h4> </li></ul>
+<div class='allProjects'>
+  <% @projects.each do |project| %>
+    <div class='oneProject'>
+      <div class='projectTitle'>
+        <%= project.title %>
+      </div>
+      <% project.todos.each do |todo| %>
+        <%= form_with model: todo, method: 'PUT' do |t| %>
+          <div class='todoText'>
+            <li> <input type="checkbox" <%= if todo.isCompleted then "checked" end %> ><label class="text"><%= todo.text %></label></li>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
+</div>
 
 <div id="block" style="display: none;">
   <h2>НОВАЯ ЗАДАЧА</h2>

@@ -1,0 +1,99 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @font-face {
+  font-family: 'OpenSans-Light';
+  src: font-url('OpenSans-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenSans-Regular';
+  src: font-url('OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenSans-Semibold';
+  src: font-url('OpenSans-Semibold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  font-family: 'OpenSans-Regular';
+  margin: auto;
+}
+h2, h3 {
+  font-family: 'OpenSans-Semibold'
+}
+.header {
+  position: relative;
+  height: 70px;
+  background-color: deepskyblue;
+  color:white;
+  margin-bottom: 3em;
+}
+.header h2 {
+  text-align: center;
+  margin:auto;
+  line-height:70px;
+}
+.header a {
+  margin: auto;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin-right: 20px;
+  line-height:70px;
+}
+.header a img{
+  margin:auto;
+  vertical-align:middle;
+}
+.allProjects {
+  background-color: white;
+  position: relative;
+}
+.oneProject {
+  -webkit-box-shadow: 1px 2px 4px 2px rgba(133,133,133,1);
+  -moz-box-shadow: 1px 2px 4px 2px rgba(133,133,133,1);
+  box-shadow: 1px 2px 4px 2px rgba(133,133,133,1);
+  height: 100%;
+  width: auto;
+  padding: 0px;
+  margin: 0 15px 15px 15px;
+}
+.projectTitle {
+  line-height:25px;
+  border-bottom: solid 1px;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 1em;  
+  padding: 10px;
+}
+.todoText {
+  padding: 10px;
+  margin: 10px;
+}
+input:checked+label{
+  text-decoration: line-through;
+}
+li {
+  list-style-type: none;
+}
+.text {
+  margin-left: 15px;
+}
