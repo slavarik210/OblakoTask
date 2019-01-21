@@ -3,31 +3,38 @@
   <a id="clickToAddTodo" href="#"><%= image_tag "addTodoIcon.png" %></a>
 </div>
 
-<div class='allProjects'>
-  <% @projects.each do |project| %>
-    <div class='oneProject'>
-      <div class='projectTitle'>
-        <%= project.title %>
-      </div>
-      <% project.todos.each do |todo| %>
-        <%= form_with model: todo, method: 'PUT' do |t| %>
-          <div class='todoText'>
-            <li> <input type="checkbox" <%= if todo.isCompleted then "checked" end %> ><label class="text"><%= todo.text %></label></li>
+<div class="allProjects">
+  <div class="container">
+    <div class="row">
+      <% @projects.each do |project| %>
+        <div class="col-md-6 col-lg-4 col-12">
+          <div class='oneProject'>
+            <div class='projectTitle'>
+              <%= project.title %>
+            </div>
+            <% project.todos.each do |todo| %>
+              <%= form_with model: todo, method: 'PUT' do |t| %>
+                <div class='todoText'>
+                  <li><label> <input type="checkbox" <%= if todo.isCompleted then "checked" end %> ><label class="text"><%= todo.text %></label>  </li> </label>
+                </div>
+              <% end %>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
 
-<div id="block" style="display: none;">
-  <h2>НОВАЯ ЗАДАЧА</h2>
-  <%= form_with scope: :todo, url: todos_path, method: :post, :html => { :class => 'new_todo'} do |todo| %>
-    <%= todo.text_field :text, :placeholder => "Название задачи..." %> <br/>
-    <%= select(:todo, "project_id", @projects.collect {|p| [ p.title, p.id ] }, {prompt: "Категория"}) %>
-    <table>
+  <div id="block">
+    <h2>НОВАЯ ЗАДАЧА</h2>
+    <%= form_with scope: :todo, url: todos_path, method: :post, :html => { :class => 'new_todo'} do |todo| %>
+      <%= todo.text_field :text, :placeholder => "Название задачи...", :class => "todoTextField" %> <br/>
+      <%= select(:todo, "project_id", @projects.collect {|p| [ p.title, p.id ] }, {prompt: "Категория"}, {:class => "select2-selection"}) %>
+      <table>
         <th><%= link_to 'ОТМЕНА', "#", :class => 'cancellation' %></th>
         <th><%= link_to 'OK', "", :class => 'submit' %></th>
       </table>
-  <% end %>
+    <% end %>
+  </div>
 </div>
+<div id='bg_layer'></div>

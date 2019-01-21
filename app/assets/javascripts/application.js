@@ -14,10 +14,14 @@
 //= require jquery3
 //= require jquery_ujs
 //= require_tree .
+//= require select2
 $(document).ready(function() {
+  $('#block, #bg_layer').hide();
 
   $("#clickToAddTodo").click(function() {
-    $("#block").show("slow");
+    $("#block, #bg_layer").show("slow");
+    block.style.display = "block";
+    $("#block").css('z-index','2');
   }); 
 
   $(".submit").click(function() {
@@ -31,7 +35,13 @@ $(document).ready(function() {
   $('input').iCheck({
     checkboxClass: 'icheckbox_square-blue',
   });
+
   $('input').on('ifToggled', function(event){
     $(this).closest("form").submit();
+  });
+  
+  $( ".select2-selection" ).select2({
+    minimumResultsForSearch: -1,
+    theme: "bootstrap"
   });
 });
