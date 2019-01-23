@@ -3,14 +3,14 @@ class TodosController < ApplicationController
   def update
     #data_json = JSON.parse request.body.read
 		#@todo = Todo.find(data_json.id)
-    todo = Todo.find(params[:id])
-    todo.update(:isCompleted => !todo.isCompleted)
+    @todo = Todo.find(params[:id])
+    @todo.update(:isCompleted => !todo.isCompleted)
     redirect_to root_path
   end
 
   def create
-    todo = Todo.new(params.require(:todo).permit([:text, :project_id]))
-    if todo.save
+    @todo = Todo.new(params.require(:todo).permit([:text, :project_id]))
+    if @todo.save
 			redirect_to root_path
 		end
   end
