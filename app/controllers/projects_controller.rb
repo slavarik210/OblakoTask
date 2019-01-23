@@ -11,5 +11,9 @@ class ProjectsController < ApplicationController
   def create
     
   end
+  def all
+		@projects = Project.all
+		render json: @projects
+	end
 
 end
