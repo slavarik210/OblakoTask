@@ -1,5 +1,5 @@
 class Todo < ApplicationRecord
-  belongs_to :project
+  belongs_to :project, optional: true
 
   def as_json options={}
 		{
