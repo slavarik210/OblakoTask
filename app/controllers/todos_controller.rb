@@ -21,7 +21,6 @@ class TodosController < ApplicationController
   def show
     @todo = Todo.find(params[:id])
     respond_to do |format|
-      format.html 
         format.html # show.html.erb
         format.json { render json: @todo }
     end
