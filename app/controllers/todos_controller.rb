@@ -17,6 +17,16 @@ class TodosController < ApplicationController
   def all
 		@todos = Todo.all
 		render json: @todos
-	end
+  end
+  def show
+    @todo = Todo.find(params[:id])
+    respond_to do |format|
+      format.html {
+        render :show ????this seems unnecessary. Can it be eliminated??? 
+      }
+      format.json { 
+        render json: @todo
+      }
+    end
 
 end
