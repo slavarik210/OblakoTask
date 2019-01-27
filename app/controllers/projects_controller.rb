@@ -22,8 +22,11 @@ class ProjectsController < ApplicationController
 
   
   def all
-		@projects = Project.all
-		render json: @projects
+    @projects = Project.all
+    @todos = Todo.all
+    respond_to do |format|
+    format.json {render :json => {:projects => @projects,:todos => @todos}}
+    end
 	end
 
 end
