@@ -12,17 +12,18 @@ class TodosController < ApplicationController
     @todo = Todo.new(params.require(:todo).permit([:text, :project_id]))
     if @todo.save
 			redirect_to root_path
-		end
+    end
+    
   end
   def all
 		@todos = Todo.all
 		render json: @todos
   end
+
   def show
-    @todo = Todo.find(params[:id])
     respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @todo }
+      format.html # show.html.erb
+      format.json { render json: @todos }
     end
 
 end
